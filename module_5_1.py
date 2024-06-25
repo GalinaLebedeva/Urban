@@ -73,7 +73,7 @@ class Building2():
         Building2.total += 1
 
 
-for i in range(Building2.total, 40):
+for i in range(40):
     if Building2.total == 40:
         break
     build = Building2()
