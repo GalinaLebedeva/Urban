@@ -1,4 +1,4 @@
-# Задача "Developer - не только разработчик"
+#1.  Задача "Developer - не только разработчик"
 
 class House():
     def __init__(self, name, number_of_floors):
@@ -25,7 +25,7 @@ h2 = House('Дом в Луйсковицах', 2)
 h1.go_to(5)
 h2.go_to(3)
 
-#Задача с переопределением атрибута Количество этажей
+#2. Задача с переопределением атрибута Количество этажей
 
 class House2 ():
 
@@ -41,7 +41,7 @@ print(h1.numberOfFloors)
 h1.setNewNumberOfFloors(2)
 print(h1.numberOfFloors)
 
-# Задача с перегрузкой оператора equal
+# 3. Задача с перегрузкой оператора equal
 
 class Building():
     def __init__(self, numberOfFloors, buildingType):
@@ -63,3 +63,20 @@ B1.numberOfFloors = 3
 print(B1)
 print(B2)
 print(B1 == B2)
+
+#4. Задача по созданию экземпляров объекта
+
+class Building2():
+    total = 0
+
+    def __init__(self):
+        Building2.total += 1
+
+
+for i in range(Building2.total, 40):
+    if Building2.total == 40:
+        break
+    build = Building2()
+    print(build)
+
+print(Building2.total)
