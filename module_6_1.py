@@ -14,8 +14,18 @@ class Animal():
     def __init__(self, name):
         self.name = name
 
+    def eat(self, food):
+        if not food.edible:
+            print(f'{self.name} не стал есть {food.name}')
+            self.alive = False
+        else:
+            print(f'{self.name} cъел {food.name}')
+            self.fed = True
+
+
 class Plant():
     """ Класс растение с двумя атрибутами: edible (съедобность), name"""
+
     edible = False
 
     def __init__(self, name):
@@ -24,40 +34,20 @@ class Plant():
 
 class Flower(Plant):
     """ Класс цветок, дочерний от класса растение"""
+    pass
+
 
 class Fruit(Plant):
     """ Класс фрукт с переопределенным оператором edible, дочерний от класса растение"""
     edible = True
 
-class Mammal(Animal, Plant):
-    """ Класс млекопитающее с атрибутом food и методом eat (food), дочерний от класса животные и класса Растение"""
 
-    def __init__(self, name):
-        super().__init__(name)
-        self.food = Fruit.edible
+class Mammal(Animal):
+    pass
 
-    def eat(self, food):
-        if self.food == False:
-            print(f'{self.name} не стал есть {food.name}')
-            self.alive = False
-        elif self.food == True:
-            print(f'{self.name} cъел {food.name}')
-            self.fed = True
 
-class Predator(Animal, Plant):
-    """ Класс хищник с атрибутом food и методом eat (food), дочерний от класса животные и класса Растение"""
-
-    def __init__(self, name):
-        super().__init__(name)
-        self.food = Flower.edible
-
-    def eat(self, food):
-        if self.food == False:
-            print(f'{self.name} не стал есть {food.name}')
-            self.alive = False
-        elif self.food == True:
-            print(f'{self.name} cъел {food.name}')
-            self.fed = True
+class Predator(Animal):
+    pass
 
 
 a1 = Predator('Гепард')
