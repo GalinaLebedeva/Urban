@@ -20,6 +20,9 @@ class Knight(Thread):
             if enemy == 0:
                 print(f'{self.name} одержал победу спустя {i} дней(дня)! Ура!')
                 break
+             elif enemy < 0:
+                print(f'{self.name} потерпел поражение')
+                break
             print(f'{self.name} сражается {i} дней (дня), осталось {enemy} воинов.')
 
 
