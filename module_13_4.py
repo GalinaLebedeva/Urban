@@ -1,6 +1,7 @@
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher.filters.state import State, StatesGroup
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.dispatcher import FSMContext
 import asyncio
 import config
@@ -17,7 +18,18 @@ class UserState(StatesGroup):
     weight = State()
 
 
-@dp.message_handler(text='Calories')
+kb = ReplyKeyboardMarkup(resize_keyboard=True)
+
+button1 = KeyboardButton(text='Рассчитать')
+button2 = KeyboardButton(text='Информация')
+
+kb.row(button1,button2)
+
+@dp.message_handler(commands=['start'])
+async def start_message(message):
+    await message.answer(text='Выбирите действие', reply_markup = kb)
+
+@dp.message_handler(text='Рассчитать')
 async def set_gender(message):
     await message.answer("Укажите свой пол в формате f / m")
     await UserState.gender.set()
